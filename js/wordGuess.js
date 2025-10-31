@@ -3,6 +3,8 @@ let playerGuess = "";
 let displayWordArray = [];
 let chosenWord = "";
 let wordArray = [];
+let lettersGuessed = [];
+let isOnMobile = false;
 
 document.addEventListener("keydown", handleKeyDown);
 
@@ -24,11 +26,13 @@ function wordToArray(word, arrayToChange) {
   }
 }
 
+// Displays the guessed words to the screen
 function DisplayWordToScreen() {
   let wordGuessingId = document.getElementById("guessingWord");
   wordGuessingId.innerHTML = displayWordArray.join(" ");
 }
 
+// Checks the letter if in the word then replaces underscore
 function checkLetter(letter) {
   let letterToCheck = letter.toLowerCase();
   if (wordArray.includes(letterToCheck)) {
@@ -38,6 +42,7 @@ function checkLetter(letter) {
   }
 }
 
+// Replaces the letter from an _ to the letter selected if in the word
 function replaceLetterInDisplay(letter, i) {
   if (i < 0 || i >= displayWordArray.length) {
     return displayWordArray;
@@ -57,8 +62,20 @@ function replaceLetterInDisplay(letter, i) {
   DisplayWordToScreen();
 }
 
+// check the letter when key is pressed
 function handleKeyDown(event) {
-  checkLetter(event.key.toLowerCase());
+  if (!isOnMobile) {
+    checkLetter(event.key.toLowerCase());
+  }
+}
+
+// If on Mobile device show the keyboard and set onMobile to true
+function isMobileDevice() {
+  if ("virtualKeyboard" in navigator) {
+    navigator.virtualKeyboard.overlaysContent = true;
+
+    navigator.virtualKeyboard.show();
+  }
 }
 
 function startGame() {
