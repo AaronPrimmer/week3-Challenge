@@ -6,17 +6,21 @@ let wordArray = [];
 let lettersGuessed = [];
 let isOnMobile = false;
 
+// listener for keydown presses
 document.addEventListener("keydown", handleKeyDown);
 
+// when document loads run the startGame function
 document.addEventListener("DOMContentLoaded", function () {
   startGame();
 });
 
+// Picks random word from words array
 function pickRandomWord() {
   let randomNumber = Math.floor(Math.random() * words.length);
   return words[randomNumber];
 }
 
+// Takes in any array and breaks down the word by each letter into the array
 function wordToArray(word, arrayToChange) {
   if (word.length > 0) {
     for (i = 0; i < word.length; i++) {
@@ -78,6 +82,7 @@ function isMobileDevice() {
   }
 }
 
+// Runs the required functions to start the game
 function startGame() {
   chosenWord = pickRandomWord();
   wordToArray(chosenWord, wordArray);
