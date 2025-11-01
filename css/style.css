@@ -60,7 +60,7 @@ header.header-section {
   margin-top: 30px;
   background-color: hsl(239, 71%, 64%);
   display: flex;
-  justify-self: center;
+  justify-content: center;
 }
 
 .word-guess-section {
