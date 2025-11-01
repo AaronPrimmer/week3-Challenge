@@ -2350,7 +2350,7 @@ function wordToArray(word, arrayToChange) {
     for (i = 0; i < word.length; i++) {
       arrayToChange.push(word.substring(i, i + 1));
     }
-    console.log(arrayToChange);
+    // Sconsole.log(arrayToChange);
   }
 }
 
