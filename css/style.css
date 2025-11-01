@@ -123,7 +123,7 @@ h3 {
   box-shadow: 0 0 5px black;
 }
 
-.editor {
+#editor {
   visibility: hidden;
 }
 
@@ -154,7 +154,7 @@ h3 {
     visibility: visible;
   }
 
-  .editor {
+  #editor {
     visibility: visible;
   }
 }
