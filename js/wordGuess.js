@@ -2429,7 +2429,7 @@ function handleKeyDown(event) {
 // If on Mobile device show the keyboard and set onMobile to true
 function isMobileDevice() {
   if ("virtualKeyboard" in navigator) {
-    mobileKeyboardButton.focus();
+    editorSelector.focus();
     navigator.virtualKeyboard.show();
   }
 }
