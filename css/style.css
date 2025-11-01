@@ -33,7 +33,7 @@ header.header-section {
 }
 
 .header-section {
-  width: 100%;
+  max-width: 100%;
   height: 120px;
   background-color: hsl(239, 71%, 54%);
   display: flex;
@@ -88,6 +88,14 @@ h3 {
   margin-bottom: 20px;
 }
 
+.button-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
 .guessing-button {
   border: 1px solid hsl(0, 0%, 30%);
   background-color: hsl(0, 0%, 60%);
@@ -97,6 +105,20 @@ h3 {
 }
 
 .guessing-button:active {
+  background-color: hsl(239, 71%, 34%);
+  box-shadow: 0 0 5px black;
+}
+
+.mobile-button {
+  background-color: hsl(239, 71%, 44%);
+  border: 1px solid hsl(0, 0%, 30%);
+  font-size: 1.3em;
+  padding: 10px;
+  border-radius: 8px;
+  visibility: hidden;
+}
+
+.mobile-button:active {
   background-color: hsl(239, 71%, 34%);
   box-shadow: 0 0 5px black;
 }
@@ -122,5 +144,9 @@ h3 {
     width: 100%;
     height: 500px;
     box-shadow: none;
+  }
+
+  .mobile-button {
+    visibility: visible;
   }
 }

@@ -2325,7 +2325,7 @@ let winOrLoseElement = "";
 let lettersGuessedId = "";
 let guessesLeftElement = "";
 let guessAgainButtonElement = "";
-let wordToGuessElement = "";
+let mobileKeyboardButton = "";
 let gameSelected = "wordGame";
 
 // when document loads run the startGame function
@@ -2334,10 +2334,10 @@ document.addEventListener("DOMContentLoaded", function () {
   lettersGuessedId = document.getElementById("letters-guessed");
   guessesLeftElement = document.getElementById("guesses-left");
   guessAgainButtonElement = document.getElementById("guess-again-button");
-  wordToGuessElement = document.getElementById("guessingWord");
+  mobileKeyboardButton = document.getElementById("mobile-keyboard-button");
 
   guessAgainButtonElement.addEventListener("click", startGame);
-  wordToGuessElement.addEventListener("click", isMobileDevice);
+  mobileKeyboardButton.addEventListener("click", isMobileDevice);
   startGame();
 });
 
@@ -2426,7 +2426,7 @@ function handleKeyDown(event) {
 
 // If on Mobile device show the keyboard and set onMobile to true
 function isMobileDevice() {
-  if ("virtualKeyboard" in navigator) {
+  if ("virtualKeyboard" in navigator && detectMobile()) {
     navigator.virtualKeyboard.overlaysContent = true;
     navigator.virtualKeyboard.show();
   }
