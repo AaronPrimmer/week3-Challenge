@@ -2426,9 +2426,8 @@ function handleKeyDown(event) {
 
 // If on Mobile device show the keyboard and set onMobile to true
 function isMobileDevice() {
-  if ("virtualKeyboard" in navigator && detectMobile()) {
+  if ("virtualKeyboard" in navigator) {
     navigator.virtualKeyboard.overlaysContent = true;
-
     navigator.virtualKeyboard.show();
   }
 }
@@ -2489,9 +2488,6 @@ function startGame() {
     wordToArray(newWord, displayWordArray);
     DisplayWordToScreen();
     displayGuessedLetters();
-    if (detectMobile()) {
-      isMobileDevice();
-    }
   } else if (gameSelected == "numberGame") {
     //Start Numbers game
   }
