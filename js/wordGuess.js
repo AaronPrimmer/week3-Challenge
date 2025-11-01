@@ -2371,11 +2371,14 @@ function checkLetter(letter) {
   if (wordArray.includes(letterToCheck)) {
     replaceLetterInDisplay(letterToCheck, wordArray.indexOf(letterToCheck));
 
+    lettersGuessed.push(letter);
     console.log(displayWordArray);
   } else {
-    NumberOfGuessesLeft -= 1;
+    if (!lettersGuessed.includes(letter)) {
+      NumberOfGuessesLeft -= 1;
+      lettersGuessed.push(letter);
+    }
   }
-  lettersGuessed.push(letter);
   displayGuessedLetters();
 
   if (
@@ -2441,13 +2444,15 @@ function endGame() {
   }
 
   guessAgainButtonElement.disabled = false;
+  guessAgainButtonElement.style.backgroundColor = "hsl(239, 71%, 44%)";
 }
 
 // Runs the required functions to start the game
 function startGame() {
   // Reset values
   guessAgainButtonElement.setAttribute("disabled", "true");
-  winOrLoseElement.innerHTML = "";
+  guessAgainButtonElement.style.backgroundColor = "hsl(0, 0%, 60%)";
+  winOrLoseElement.innerHTML = "Good Luck!";
   NumberOfGuessesLeft = 10;
   guessesLeftElement.innerHTML = `Guesses Left: ${NumberOfGuessesLeft}`;
   displayWordArray.length = 0;
