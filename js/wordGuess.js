@@ -2325,6 +2325,7 @@ let winOrLoseElement = "";
 let lettersGuessedId = "";
 let guessesLeftElement = "";
 let guessAgainButtonElement = "";
+let gameSelected = "wordGame";
 
 // when document loads run the startGame function
 document.addEventListener("DOMContentLoaded", function () {
@@ -2372,7 +2373,7 @@ function checkLetter(letter) {
     replaceLetterInDisplay(letterToCheck, wordArray.indexOf(letterToCheck));
 
     lettersGuessed.push(letter);
-    console.log(displayWordArray);
+    // console.log(displayWordArray);
   } else {
     if (!lettersGuessed.includes(letter) && letterToCheck.length == 1) {
       NumberOfGuessesLeft -= 1;
@@ -2409,7 +2410,7 @@ function replaceLetterInDisplay(letter, i) {
       return character;
     }
   });
-  console.log("wordArray: " + wordArray);
+  // console.log("wordArray: " + wordArray);
   DisplayWordToScreen();
 }
 
@@ -2449,30 +2450,34 @@ function endGame() {
 
 // Runs the required functions to start the game
 function startGame() {
-  // Reset values
-  guessAgainButtonElement.setAttribute("disabled", "true");
-  guessAgainButtonElement.style.backgroundColor = "hsl(0, 0%, 60%)";
-  winOrLoseElement.innerHTML = "Good Luck!";
-  NumberOfGuessesLeft = 10;
-  guessesLeftElement.innerHTML = `Guesses Left: ${NumberOfGuessesLeft}`;
-  displayWordArray.length = 0;
-  wordArray.length = 0;
-  lettersGuessed.length = 0;
-  chosenWord = "";
+  if (gameSelected == "wordGame") {
+    // Reset values
+    guessAgainButtonElement.setAttribute("disabled", "true");
+    guessAgainButtonElement.style.backgroundColor = "hsl(0, 0%, 60%)";
+    winOrLoseElement.innerHTML = "Good Luck!";
+    NumberOfGuessesLeft = 10;
+    guessesLeftElement.innerHTML = `Guesses Left: ${NumberOfGuessesLeft}`;
+    displayWordArray.length = 0;
+    wordArray.length = 0;
+    lettersGuessed.length = 0;
+    chosenWord = "";
 
-  // listener for keydown presses
-  document.addEventListener("keydown", handleKeyDown);
+    // listener for keydown presses
+    document.addEventListener("keydown", handleKeyDown);
 
-  chosenWord = pickRandomWord();
-  wordToArray(chosenWord, wordArray);
+    chosenWord = pickRandomWord();
+    wordToArray(chosenWord, wordArray);
 
-  let wordLength = chosenWord.length;
-  let newWord = "";
-  for (i = wordLength; i >= 0; i--) {
-    newWord = chosenWord.replaceAll(/[a-zA-Z]/g, "_");
+    let wordLength = chosenWord.length;
+    let newWord = "";
+    for (i = wordLength; i >= 0; i--) {
+      newWord = chosenWord.replaceAll(/[a-zA-Z]/g, "_");
+    }
+
+    wordToArray(newWord, displayWordArray);
+    DisplayWordToScreen();
+    displayGuessedLetters();
+  } else if (gameSelected == "numberGame") {
+    //Start Numbers game
   }
-
-  wordToArray(newWord, displayWordArray);
-  DisplayWordToScreen();
-  displayGuessedLetters();
 }
