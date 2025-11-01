@@ -2430,6 +2430,15 @@ function isMobileDevice() {
   }
 }
 
+function detectMobile() {
+  const mobileRegex =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  const hasTouch =
+    "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0;
+
+  return mobileRegex.test(navigator.userAgent) && hasTouch;
+}
+
 // Ends the game by determining if won or not
 function endGame() {
   // listener for keydown presses
@@ -2477,7 +2486,9 @@ function startGame() {
     wordToArray(newWord, displayWordArray);
     DisplayWordToScreen();
     displayGuessedLetters();
-    isMobileDevice();
+    if (detectMobile()) {
+      isMobileDevice();
+    }
   } else if (gameSelected == "numberGame") {
     //Start Numbers game
   }
