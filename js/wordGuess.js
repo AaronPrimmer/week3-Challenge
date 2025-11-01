@@ -2477,6 +2477,7 @@ function startGame() {
     wordToArray(newWord, displayWordArray);
     DisplayWordToScreen();
     displayGuessedLetters();
+    isMobileDevice();
   } else if (gameSelected == "numberGame") {
     //Start Numbers game
   }
