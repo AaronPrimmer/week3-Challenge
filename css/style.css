@@ -123,6 +123,10 @@ h3 {
   box-shadow: 0 0 5px black;
 }
 
+.editor {
+  visibility: hidden;
+}
+
 /* When the Screen gets smaller change attributes */
 
 @media only screen and (max-width: 768px) {
@@ -147,6 +151,10 @@ h3 {
   }
 
   .mobile-button {
+    visibility: visible;
+  }
+
+  .editor {
     visibility: visible;
   }
 }
