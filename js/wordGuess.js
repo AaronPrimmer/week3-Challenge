@@ -2326,6 +2326,7 @@ let lettersGuessedId = "";
 let guessesLeftElement = "";
 let guessAgainButtonElement = "";
 let mobileKeyboardButton = "";
+let editorSelector = "";
 let gameSelected = "wordGame";
 
 // when document loads run the startGame function
@@ -2335,6 +2336,7 @@ document.addEventListener("DOMContentLoaded", function () {
   guessesLeftElement = document.getElementById("guesses-left");
   guessAgainButtonElement = document.getElementById("guess-again-button");
   mobileKeyboardButton = document.getElementById("mobile-keyboard-button");
+  editorSelector = document.getElementById("editor");
 
   guessAgainButtonElement.addEventListener("click", startGame);
   mobileKeyboardButton.addEventListener("click", isMobileDevice);
@@ -2426,9 +2428,10 @@ function handleKeyDown(event) {
 
 // If on Mobile device show the keyboard and set onMobile to true
 function isMobileDevice() {
-  if ("virtualKeyboard" in navigator && detectMobile()) {
+  if ("virtualKeyboard" in navigator) {
     navigator.virtualKeyboard.overlaysContent = true;
-    navigator.virtualKeyboard.show();
+    editorSelector.focus();
+    editorSelector.navigator.virtualKeyboard.show();
   }
 }
 
