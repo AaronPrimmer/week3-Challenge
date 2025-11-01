@@ -2368,13 +2368,13 @@ function DisplayWordToScreen() {
 // Checks the letter if in the word then replaces underscore
 function checkLetter(letter) {
   let letterToCheck = letter.toUpperCase();
-  if (wordArray.includes(letterToCheck)) {
+  if (wordArray.includes(letterToCheck) && letterToCheck.length == 1) {
     replaceLetterInDisplay(letterToCheck, wordArray.indexOf(letterToCheck));
 
     lettersGuessed.push(letter);
     console.log(displayWordArray);
   } else {
-    if (!lettersGuessed.includes(letter)) {
+    if (!lettersGuessed.includes(letter) && letterToCheck.length == 1) {
       NumberOfGuessesLeft -= 1;
       lettersGuessed.push(letter);
     }
