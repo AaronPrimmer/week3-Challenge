@@ -2325,8 +2325,6 @@ let winOrLoseElement = "";
 let lettersGuessedId = "";
 let guessesLeftElement = "";
 let guessAgainButtonElement = "";
-let mobileKeyboardButton = "";
-let editorSelector = "";
 let gameSelected = "wordGame";
 
 // when document loads run the startGame function
@@ -2335,11 +2333,8 @@ document.addEventListener("DOMContentLoaded", function () {
   lettersGuessedId = document.getElementById("letters-guessed");
   guessesLeftElement = document.getElementById("guesses-left");
   guessAgainButtonElement = document.getElementById("guess-again-button");
-  mobileKeyboardButton = document.getElementById("mobile-keyboard-button");
-  editorSelector = document.getElementById("editor");
 
   guessAgainButtonElement.addEventListener("click", startGame);
-  mobileKeyboardButton.addEventListener("click", isMobileDevice);
   startGame();
 });
 
@@ -2424,23 +2419,6 @@ function handleKeyDown(event) {
   if (!isOnMobile) {
     checkLetter(event.key.toUpperCase());
   }
-}
-
-// If on Mobile device show the keyboard and set onMobile to true
-function isMobileDevice() {
-  if ("virtualKeyboard" in navigator) {
-    editorSelector.focus();
-    navigator.virtualKeyboard.show();
-  }
-}
-
-function detectMobile() {
-  const mobileRegex =
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  const hasTouch =
-    "ontouchstart" in document.documentElement || navigator.maxTouchPoints > 0;
-
-  return mobileRegex.test(navigator.userAgent) && hasTouch;
 }
 
 // Ends the game by determining if won or not
